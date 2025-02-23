@@ -27,7 +27,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [buildalon-windows, buildalon-macos, buildalon-ubuntu]
         include:
           - os: buildalon-windows
             build-target: StandaloneWindows64
