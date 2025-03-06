@@ -51,15 +51,16 @@ jobs:
           name: Build
           path: build
           
-    name: send
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: copy file via ssh password
+      - uses: actions/download-artifact@v4
+        with:
+          name: Build
+          path: distfiles
+          
+      - name: copy file to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: kasper-projecten.be
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{secrets.SSH_PRIVATE_KEY}}
-          source: Build
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: distfiles/*
           target: /var/www/kasper-projecten.be/brawl_car
