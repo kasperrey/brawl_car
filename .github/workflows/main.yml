@@ -51,7 +51,6 @@ jobs:
           name: Build
           path: build
           
-  send:
     name: send
     runs-on: ubuntu-latest
     steps:
@@ -63,4 +62,4 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{secrets.SSH_PRIVATE_KEY}}
           source: Build
-          target: /var/www/kasper-projecten.be
+          target: /var/www/kasper-projecten.be/brawl_car
