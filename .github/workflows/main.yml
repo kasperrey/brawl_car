@@ -60,7 +60,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: kasper-projecten.be
-          username: ${{ secrets.USERNAME }}
+          username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: distfiles/*
           target: /var/www/kasper-projecten.be/brawl_car
