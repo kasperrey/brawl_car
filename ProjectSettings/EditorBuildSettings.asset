@@ -9,18 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/StarterAssets/ThirdPersonController/Scenes/Ontdek.unity
-    guid: e9017d5f96b9f09489b4b37e1d6eb914
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0b9750b08309d01cb887941a7b993533
+  - enabled: 1
+    path: Assets/StarterAssets/ThirdPersonController/Scenes/Ontdek.unity
+    guid: e9017d5f96b9f09489b4b37e1d6eb914
   - enabled: 1
     path: Assets/Scenes/Race.unity
     guid: cdf7fa4e67f0dc4caa86c23dd9256049
   - enabled: 1
     path: Assets/Scenes/RaceMultiPlayer.unity
     guid: 8b9dc1e1e5d0276829b324f25d59ec21
-  - enabled: 1
+  - enabled: 0
     path: Assets/NetcodeForEntitiesSetup/Scenes/Gameplay.unity
     guid: 108950cfe1a137f408343749add494d3
   m_configObjects:
