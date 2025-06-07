@@ -17,10 +17,10 @@ MonoBehaviour:
     Answers:
     - QuestionId: Pace
       Answers:
-      - Fast
+      - Slow
     - QuestionId: Cheating
       Answers:
-      - CheatingImportant
+      - CheatingNotImportant
     - QuestionId: CostSensitivity
       Answers:
       - NoCost
@@ -29,8 +29,8 @@ MonoBehaviour:
       - ClientServer
     - QuestionId: PlayerCount
       Answers:
-      - 16
+      - 8
   Preset: 2
   SelectedSolutions:
-    SelectedHostingModel: 2
-    SelectedNetcodeSolution: 2
+    SelectedHostingModel: 4
+    SelectedNetcodeSolution: 1

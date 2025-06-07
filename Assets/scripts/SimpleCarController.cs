@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
     
 public class SimpleCarController : MonoBehaviour {
-    public List<AxleInfo> axleInfos; // the information about each individual axle
+    public List<WheelAxleInfo> axleInfos; // the information about each individual axle
     public float maxMotorTorque; // maximum torque the motor can apply to wheel
     public float maxSteeringAngle; // maximum steer angle the wheel can have
 
@@ -24,7 +24,7 @@ public class SimpleCarController : MonoBehaviour {
         float motor = maxMotorTorque * _input.movement.y;
         float steering = maxSteeringAngle * _input.movement.x;
             
-        foreach (AxleInfo axleInfo in axleInfos) {
+        foreach (WheelAxleInfo axleInfo in axleInfos) {
             if (axleInfo.steering) {
                 axleInfo.leftWheel.steerAngle = steering;
                 axleInfo.rightWheel.steerAngle = steering;
@@ -47,7 +47,7 @@ public class SimpleCarController : MonoBehaviour {
 }
     
 [System.Serializable]
-public class AxleInfo {
+public class WheelAxleInfo {
     public WheelCollider leftWheel;
     public WheelCollider rightWheel;
     public bool motor; // is this wheel attached to motor?
