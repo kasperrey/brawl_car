@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0b9750b08309d01cb887941a7b993533
@@ -17,12 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Race.unity
     guid: cdf7fa4e67f0dc4caa86c23dd9256049
-  - enabled: 1
-    path: Assets/NetcodeForEntitiesSetup/Scenes/Gameplay.unity
-    guid: 108950cfe1a137f408343749add494d3
-  - enabled: 1
-    path: Assets/NetcodeForEntitiesSetup/Scenes/GameplaySubScene.unity
-    guid: 2da8d4c4b0890945fa7bd506b73fb04e
   - enabled: 1
     path: Assets/NGO_Minimal_Setup/NGO_Setup.unity
     guid: e4114f70ed737f2578684302dfdad72c
