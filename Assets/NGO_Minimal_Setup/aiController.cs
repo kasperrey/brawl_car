@@ -6,6 +6,8 @@ public class aiController : MonoBehaviour
     [SerializeField] private Transform[] waypoints;
     private NavMeshAgent agent;
     private int currentWaypointIndex = 0;
+    private bool isMovingToWaypoint = false;
+    private float waypointReachedThreshold = 2f;
 
     void Start()
     {
@@ -30,10 +32,15 @@ public class aiController : MonoBehaviour
     {
         if (agent == null || waypoints.Length == 0) return;
 
-        // Check if we've reached the current waypoint
-        if (!agent.pathPending && agent.remainingDistance < 1f)
+        // Only check for waypoint completion if we're currently moving to one
+        if (isMovingToWaypoint && !agent.pathPending)
         {
-            MoveToNextWaypoint();
+            // Check if we've reached the current waypoint
+            if (agent.remainingDistance <= waypointReachedThreshold)
+            {
+                isMovingToWaypoint = false;
+                MoveToNextWaypoint();
+            }
         }
     }
 
@@ -43,12 +50,26 @@ public class aiController : MonoBehaviour
         {
             agent.SetDestination(waypoints[currentWaypointIndex].position);
             currentWaypointIndex++;
+            isMovingToWaypoint = true;
         }
         else
         {
             // Reset to first waypoint when we reach the end
             currentWaypointIndex = 0;
             agent.SetDestination(waypoints[currentWaypointIndex].position);
+            isMovingToWaypoint = true;
+        }
+    }
+
+    public void SetWaypoints(Transform[] newWaypoints)
+    {
+        waypoints = newWaypoints;
+        currentWaypointIndex = 0;
+        isMovingToWaypoint = false;
+        
+        if (agent != null && waypoints.Length > 0)
+        {
+            MoveToNextWaypoint();
         }
     }
 }

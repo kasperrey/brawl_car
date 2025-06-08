@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    private bool shouldBeLocked = true;
+
     private void Awake()
     {
         // Lock cursor immediately when the script loads
+        shouldBeLocked = true;
         MainMenuManager.SetCursorState(true);
     }
 
     private void Start()
     {
         // Ensure cursor is locked after scene is fully loaded
+        shouldBeLocked = true;
         MainMenuManager.SetCursorState(true);
     }
 
@@ -19,14 +23,18 @@ public class CursorManager : MonoBehaviour
         // Optional: Add escape key to toggle cursor lock
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            bool isCurrentlyLocked = Cursor.lockState == CursorLockMode.Locked;
-            MainMenuManager.SetCursorState(!isCurrentlyLocked);
+            shouldBeLocked = !shouldBeLocked;
+            MainMenuManager.SetCursorState(shouldBeLocked);
         }
 
-        // Force cursor to stay locked if it should be
-        if (Cursor.lockState != CursorLockMode.Locked)
+        // Only update cursor state if it doesn't match our desired state
+        if (shouldBeLocked && Cursor.lockState != CursorLockMode.Locked)
         {
             MainMenuManager.SetCursorState(true);
+        }
+        else if (!shouldBeLocked && Cursor.lockState == CursorLockMode.Locked)
+        {
+            MainMenuManager.SetCursorState(false);
         }
     }
 } 

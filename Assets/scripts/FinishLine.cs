@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+
 public class FinishLine : MonoBehaviour
 {
     [Header("UI References")]
@@ -12,6 +13,8 @@ public class FinishLine : MonoBehaviour
     private float elapsedTime = 0f;
     private float startTime;
     private float[] times = new float[9];
+    private float lastFinishTime = 0f;
+    private float finishCooldown = 1f; // Minimum time between finishes
 
     private void Start()
     {
@@ -35,16 +38,15 @@ public class FinishLine : MonoBehaviour
         
         if (isPlayer || hasPlayerParent)
         {
-            if (!isTimerRunning)
+            float currentTime = Time.time;
+            if (currentTime - lastFinishTime < finishCooldown)
             {
-                // Start the timer
-                StartTimer();
+                return; // Ignore trigger if we're still in cooldown
             }
-            else
-            {
-                // Stop the timer
-                StopTimer();
-            }
+            // Stop the timer
+            StopTimer();
+            lastFinishTime = currentTime;
+            StartTimer();
         }
     }
 
@@ -86,7 +88,6 @@ public class FinishLine : MonoBehaviour
             }
             
             UpdateTimesDisplay();
-            StartTimer();
         }
     }
 
